@@ -1,0 +1,95 @@
+{
+  "fashion": {
+    "meta_features": {
+      "name": "fashion",
+      "num_classes": 10,
+      "num_train": 60000,
+      "height": 28,
+      "width": 28,
+      "channels": 1,
+      "imbalance_ratio": 1.0,
+      "minority_fraction": 0.1
+    },
+    "vector": [
+      2.3978952727983707,
+      11.002116507732017,
+      6.665683717782408,
+      1.0,
+      0.6931471805599453
+    ],
+    "config": {
+      "backbone": "mobilenetv3",
+      "lr": 0.0022673986523780395,
+      "weight_decay": 6.290644294586145e-06,
+      "dropout": 0.2571172192068058,
+      "optimizer": "sgd",
+      "scheduler": "none",
+      "frozen_stage": 3,
+      "aug_strength": "light",
+      "class_weighting": "none",
+      "max_resolution": 224
+    }
+  },
+  "emotions": {
+    "meta_features": {
+      "name": "emotions",
+      "num_classes": 7,
+      "num_train": 28709,
+      "height": 48,
+      "width": 48,
+      "channels": 1,
+      "imbalance_ratio": 16.548165137614678,
+      "minority_fraction": 0.01518687519593159
+    },
+    "vector": [
+      2.0794415416798357,
+      10.26500077311511,
+      7.742835955430749,
+      1.0,
+      2.8649493938828177
+    ],
+    "config": {
+      "backbone": "mobilenetv3",
+      "lr": 0.0022673986523780395,
+      "weight_decay": 6.290644294586145e-06,
+      "dropout": 0.2571172192068058,
+      "optimizer": "sgd",
+      "scheduler": "none",
+      "frozen_stage": 3,
+      "aug_strength": "light",
+      "class_weighting": "none",
+      "max_resolution": 224
+    }
+  },
+  "flowers": {
+    "meta_features": {
+      "name": "flowers",
+      "num_classes": 102,
+      "num_train": 5732,
+      "height": 512,
+      "width": 512,
+      "channels": 3,
+      "imbalance_ratio": 6.464285714285714,
+      "minority_fraction": 0.004884856943475227
+    },
+    "vector": [
+      4.634728988229636,
+      8.653994232908383,
+      12.476653064769005,
+      3.0,
+      2.010129741789607
+    ],
+    "config": {
+      "backbone": "resnet18",
+      "lr": 0.003243099088386859,
+      "weight_decay": 0.00012915629316911437,
+      "dropout": 0.2965444603864609,
+      "optimizer": "sgd",
+      "scheduler": "step",
+      "frozen_stage": 2,
+      "aug_strength": "medium",
+      "class_weighting": "none",
+      "max_resolution": 160
+    }
+  }
+}

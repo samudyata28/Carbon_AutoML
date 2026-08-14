@@ -1,0 +1,34 @@
+
+paths:
+  data_root: "./data"
+  output_dir: "./outputs"
+  portfolio: "./portfolios/portfolio.json"
+
+  optuna_storage: null
+
+data:
+  val_fraction: 0.15          
+
+search:
+  n_trials: 40               
+  budget_hours: 12.0         
+  min_epochs: 1               
+  max_epochs: 12              
+  reduction_factor: 3         
+
+cafa:                         n
+  enabled: true
+  lambda0: 0.5                
+  anneal_fraction: 0.6        
+  cooling: "cosine"           
+
+warm_start:                   
+  enabled: true
+  k: 1                       
+  update_portfolio: false     
+
+carbon:
+  enabled: true               
+
+final:
+  epochs: 30                  
