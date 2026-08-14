@@ -1,0 +1,38 @@
+[project]
+name = "automl"
+version = "0.1.0"
+description = "GreenVision — Resource-Aware Multi-Fidelity AutoML for Image Classification (AutoML SS26 Exam)"
+requires-python = ">=3.10"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "AutoML SS26 Team" }]
+dependencies = [
+  "torch",
+  "torchvision",
+  # NOTE: do NOT pin numpy<2.0. Current torch/torchvision are built against
+  # numpy 2.x; the old pin downgrades numpy and breaks the host environment.
+  # On Colab, install with --no-deps (see requirements-colab.txt) so pip never
+  # replaces the preinstalled CUDA torch build with a CPU wheel from PyPI.
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "optuna>=3.4",
+  "pyyaml",
+  "matplotlib",
+  "codecarbon",
+  "Pillow",
+  "IPython",
+]
+
+[project.optional-dependencies]
+extras = [
+  "grad-cam",          # Grad-CAM visualisations (Stage 9)
+  "fanova",            # alternative HP-importance backend
+]
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

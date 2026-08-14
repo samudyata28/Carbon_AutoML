@@ -1,0 +1,7 @@
+# Colab already ships torch/torchvision/numpy/pandas/scikit-learn/matplotlib.
+# Install only what's missing:
+optuna>=3.4
+pyyaml
+codecarbon
+# optional (Stage 9 extras):
+grad-cam

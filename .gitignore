@@ -1,0 +1,45 @@
+# Data (downloaded at runtime)
+data/fashion/
+data/flowers/
+data/emotions/
+data/skin_cancer/
+
+# Keep only predictions for autograder
+!data/exam_dataset/
+!data/exam_dataset/predictions.npy
+
+# Outputs (generated at runtime)
+outputs/
+*.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+automl-vision-env/
+
+# Models and checkpoints
+*.pth
+*.pt
+*.ckpt
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Colab
+*.ipynb_checkpoints/
