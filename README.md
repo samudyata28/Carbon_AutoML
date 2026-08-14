@@ -1,30 +1,27 @@
+# GreenVision
 ### Carbon-Aware Fidelity Allocation in Multi-Fidelity Bayesian Optimisation
+ 
+A one-click AutoML pipeline for image classification that treats **energy consumption as a first-class objective, not an afterthought.** Given a vision dataset and a compute budget, it searches for a hyperparameter configuration that maximises accuracy while actively steering search effort away from carbon-expensive dead ends.
 
-Carbon-aware multi-fidelity Bayesian Optimization over fine-tuning recipes for image
-classification. Optimizes top-1 accuracy on a hidden test set,
-and treats energy/CO₂ as a measured, first-class property of the search.
-
-## Install (local / cluster)
-```bash
-python3 -m venv venv && source venv/bin/activate
-pip install -e .
-python -c "import automl; print(automl.__version__)"
 ```
-## Data
-```bash
-python download_datasets.py     
+python run.py --mode search   # discovers the best configuration
+python run.py --mode final    # trains the best config and produces test predictions
 ```
 
-## Usage 
-```bash
-# 1) SEARCH — carbon-aware multi-fidelity BO.
-python run.py --dataset skin_cancer --mode search --seed 42 \
-    --budget-hours 12 --n-trials 40 \
-    --optuna-storage "sqlite:////content/drive/MyDrive/greenvision/study.db"
-
-# 2) FINAL — retrain the best config at full fidelity and predict.
-python run.py --dataset skin_cancer --mode final \
-    --config outputs/best_config.json --output-path final_test_preds.npy
+---
+ 
+## The Idea
+ 
+Standard AutoML treats every candidate configuration equally, regardless of how expensive it is to evaluate. A large, power-hungry architecture and a small, efficient one get the same shot at the search budget — even if the expensive one was never going to win.
+ 
+**CAFA (Carbon-Aware Fidelity Allocation)** fixes this by changing what Optuna's Hyperband pruner actually prunes on. Instead of comparing trials on raw accuracy, it compares them on a cost-cooled utility:
+ 
+```
+utility(t) = accuracy − λ(t) × normalised_cost
+ 
+λ(t) = λ₀ × 0.5 × (1 + cos(π × t / 0.6))   for t < 0.6
+λ(t) = 0                                     for t ≥ 0.6
+      (λ₀ = 0.5)
 ```
 
 **★ Three novel contributions** — CAFA cost-cooled fidelity allocation (`cafa.py`),
