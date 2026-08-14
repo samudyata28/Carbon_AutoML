@@ -1,5 +1,4 @@
 ### Carbon-Aware Fidelity Allocation in Multi-Fidelity Bayesian Optimisation
-*AutoML Machine Learning Lab — SS2026 · Vision modality*
 
 Carbon-aware multi-fidelity Bayesian Optimization over fine-tuning recipes for image
 classification. Optimizes top-1 accuracy on a hidden test set,
@@ -16,7 +15,7 @@ python -c "import automl; print(automl.__version__)"
 python download_datasets.py     
 ```
 
-## Usage — two commands (submission spec)
+## Usage 
 ```bash
 # 1) SEARCH — carbon-aware multi-fidelity BO.
 python run.py --dataset skin_cancer --mode search --seed 42 \
